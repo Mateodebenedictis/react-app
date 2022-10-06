@@ -1,5 +1,5 @@
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components"
-
+import '../styles/custom-styles.css';
 
 const product = {
     id: '1',
@@ -24,23 +24,38 @@ export const ShoppingPage = () => {
 
             >
 
-                {/* <ProductCard product={ product }>
+                <ProductCard 
+                    product={ product }
+                    className="bg-dark custom-card"
+                >
 
-                    <ProductCard.Image img={ product.img }/>
-                    <ProductCard.Title title={ product.title }/>
-                    <ProductCard.Buttons increaseBy={ function (value: number) : void {
-                        throw new Error('Function not implemented.');
-                    }}
-                    counter={ 0 } />
+                    <ProductCard.Image className="custom-image"/>
+                    <ProductCard.Title className="text-white text-bold"/>
+                    <ProductCard.Buttons className="custom-div-buttons custom-buttons"/>
                     
-                </ProductCard> */}
+                </ProductCard>
 
 
-                <ProductCard product={product}>
+                <ProductCard 
+                    product={product}
+                    className="bg-dark custom-card"
+                >
 
-                    <ProductImage />
-                    <ProductTitle />
-                    <ProductButtons/>
+                    <ProductImage className="custom-image" style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}/>
+                    <ProductTitle className="text-white text-bold" />
+                    <ProductButtons className="custom-div-buttons custom-buttons"/>
+
+                </ProductCard>
+
+                <ProductCard 
+                    product={product}
+                    style={ {backgroundColor: 'yellow'} }
+                    className="custom-card"
+                >
+
+                    <ProductImage  className="custom-image" style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}/>
+                    <ProductTitle className="text-bold" />
+                    <ProductButtons className="custom-div-buttons"/>
 
                 </ProductCard>
 

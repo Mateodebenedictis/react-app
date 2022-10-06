@@ -1,54 +1,37 @@
 import { useContext } from "react";
-import { ProductContext } from "./ProductCard";
+import { ProductContext } from './ProductCard';
 
 import styles from '../styles/styles.module.css';
 
 
+export interface Props {
+    className? : string;
+    style?: React.CSSProperties;
+}
 
-
-export const ProductButtons = () => {
+export const ProductButtons = ({ className, style } : Props) => {
 
     const {increaseBy, counter} = useContext(ProductContext);
 
     return (
 
-        <div className={ styles.buttonsContainer }>
+        <div 
+            className={ `${styles.buttonsContainer} ${ className }` }
+            style={style}
+        >
 
-            <ProductMinusButton increaseBy={ increaseBy }/>
+            <button 
+                className={ styles.buttonMinus }
+                onClick={ () => increaseBy(-1) }    
+            > - </button>
 
-            <ProductLabelButton counter={ counter }/>
+            <div className={ styles.countLabel}> { counter } </div>
 
-            <ProductAddButton increaseBy={ increaseBy }/>
+            <button 
+                className={ styles.buttonAdd }
+                onClick={ () => increaseBy(+1) }    
+            > + </button>
 
         </div>
     ); 
-}
-
-const ProductMinusButton = ( { increaseBy } : { increaseBy : ( value: number ) => void } ) => {
-
-    return (
-
-        <button 
-            className={ styles.buttonMinus }
-            onClick={ () => increaseBy(-1) }    
-        > - </button>
-    );
-}
-
-const ProductAddButton = ( { increaseBy } : { increaseBy : ( value: number ) => void } ) => {
-
-    return (
-
-        <button 
-            className={ styles.buttonAdd }
-            onClick={ () => increaseBy(+1) }    
-        > + </button>
-    );
-}
-
-const ProductLabelButton = ( { counter } : { counter : number } ) => {
-
-    return (
-        <div className={ styles.countLabel}> { counter } </div>
-    );
 }
